@@ -2,8 +2,7 @@
 
 ### **Application Summary**
 
-DwellBnB is the online place for short-term,  
-informal lets of surplus spaces.
+DwellBnB is the online place for short-term, informal lets of surplus spaces.
 
 It provides proprietors with a place to list their spaces, which renters can  
 then choose from, with the subsequent rental transaction taking place on  
@@ -11,8 +10,7 @@ the DwellBnB platform.
 
 ### **User Stories**
 
-The application has been developed on the basis of the following  
-User Stories:
+DwellBnB has been developed on the basis of the following User Stories:
 
 ##### **User Story 1 - Sign-up**
 
