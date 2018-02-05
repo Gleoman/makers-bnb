@@ -1,3 +1,4 @@
+
 # **DwellBnB**
 
 ### **Application Summary**
@@ -91,4 +92,7 @@ As a user
 So that I can log back in  
 I want my user details to be saved
 ```
+## Usage
+
+Create two databases, dwellbnb-test and dwellbnb-development.
 
