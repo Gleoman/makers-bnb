@@ -12,15 +12,15 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/users' do
-    session[:name] = params[:name]
-    User.create(password: params[:password],
+    user = User.create(password: params[:password],
                 name: params[:name],
                 username: params[:username])
+    session[:user_id] = user.id
     redirect '/users'
   end
 
   get '/users' do
-    @name = session[:name]
+    @name = User.get(session[:user_id]).name
     erb :users
   end
 
