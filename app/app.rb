@@ -13,6 +13,9 @@ class DwellBNB < Sinatra::Base
 
   post '/users' do
     session[:name] = params[:name]
+    User.create(password: params[:password],
+                name: params[:name],
+                username: params[:username])
     redirect '/users'
   end
 
