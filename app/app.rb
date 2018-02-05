@@ -17,4 +17,18 @@ class DwellBNB < Sinatra::Base
     @name = session[:name]
     erb :users
   end
+
+  get '/spaces/new' do
+    erb :'spaces/new'
+  end
+
+  post '/spaces' do
+    session[:space] = params[:space]
+    redirect '/spaces'
+  end
+
+  get '/spaces' do
+    @listings = session[:space]
+    erb :'spaces/listings'
+  end
 end
