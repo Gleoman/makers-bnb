@@ -1,1 +1,5 @@
-<%= @listings %> listed
+<% @listings.each do |space| %>
+  <li>
+    <%= space.name %> listed
+  </li>
+  <% end %>
