@@ -4,5 +4,5 @@ class User
   property :id, Serial
   property :name, Text
   property :username, Text, required: true, unique: true
-  property :password, Text
+  property :password, Text, required: true
 end
