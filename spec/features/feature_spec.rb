@@ -5,9 +5,7 @@ feature 'user can sign up' do
   end
 
   scenario 'filling in a form' do
-    visit '/'
-    fill_in 'name', with: 'Ed'
-    click_button 'Sign up'
+    sign_up
     expect(page).to have_content('Welcome Ed')
     expect(current_path).to eq '/users'
   end
