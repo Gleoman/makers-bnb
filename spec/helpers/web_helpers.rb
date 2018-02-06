@@ -7,8 +7,10 @@ def sign_up
   click_button 'Sign up'
 end
 
-def list_space(name)
+def list_space(name, description, price)
   visit '/spaces/new'
   fill_in 'name', with: name
+  fill_in 'description', with: description
+  fill_in 'price', with: price
   click_button 'List space'
 end
