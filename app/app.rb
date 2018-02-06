@@ -1,4 +1,5 @@
 require 'pry'
+require './app/views/view_helpers'
 
 ENV['RACK_ENV'] ||= 'development'
 
@@ -46,9 +47,11 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    Space.create(name: params[:name],
+    space = Space.new(name: params[:name],
                 description: params[:description],
                 price: params[:price])
+    add_availability(space)
+    space.save
     redirect '/spaces'
   end
 
@@ -78,5 +81,4 @@ class DwellBNB < Sinatra::Base
     flash.keep[:notice] = 'Goodbye !'
     redirect to '/'
   end
-
 end
