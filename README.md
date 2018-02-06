@@ -93,7 +93,7 @@ So that I can log back in
 I want my user details to be saved
 ```
 
-##### **User Story 11 - Password encryption
+##### **User Story 11 - Password encryption**
 
 ```
 As a user
