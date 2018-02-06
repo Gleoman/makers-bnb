@@ -3,8 +3,8 @@ def valid_user(user)
     session[:user_id] = user.id
     redirect to('/users')
   else
-    session[:error] = true
-    redirect to('/')
+    flash.now[:errors] = user.errors.full_messages
+    erb :index
   end
 end
 
@@ -13,4 +13,8 @@ def add_availability(space)
     availability = Availability.first_or_create(date: dates)
     space.availabilities << availability
   end
+end
+
+def current_user
+  @current_user ||= User.get(session[:user_id])
 end
