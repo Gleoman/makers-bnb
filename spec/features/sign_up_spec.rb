@@ -5,6 +5,13 @@ feature 'sign up' do
     expect(current_path).to eq '/users'
   end
 
+  scenario 'user tries to sign-up twice with same details' do
+    sign_up
+    expect { sign_up } .to change(User, :count). by(0)
+    expect(page).to have_content('Username in use')
+    expect(current_path).to eq '/'
+  end
+
   scenario 'Expect user count to have increased by one' do
     expect { sign_up } .to change(User, :count). by(1)
   end
