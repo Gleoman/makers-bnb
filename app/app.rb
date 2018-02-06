@@ -14,12 +14,6 @@ class DwellBNB < Sinatra::Base
   register Sinatra::Flash
   use Rack::MethodOverride
 
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
-  end
-
   get '/' do
     erb :index
   end
@@ -28,13 +22,7 @@ class DwellBNB < Sinatra::Base
     user = User.new(password: params[:password],
                 name: params[:name],
                 username: params[:username])
-    if user.save
-      session[:user_id] = user.id
-      redirect to('/users')
-    else
-      flash.now[:errors] = user.errors.full_messages
-      erb :index
-    end
+    valid_user(user)
   end
 
   get '/users' do
