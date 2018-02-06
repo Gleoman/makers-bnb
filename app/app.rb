@@ -29,12 +29,12 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    session[:space] = params[:space]
+    Space.create(name: params[:name])
     redirect '/spaces'
   end
 
   get '/spaces' do
-    @listings = session[:space]
+    @listings = Space.all
     erb :'spaces/listings'
   end
 end
