@@ -1,1 +1,7 @@
-<%= @listings %> listed
+<% @listings.each do |space| %>
+  <ul>
+    <h1><%= space.name %> listed </h1>
+    <p> Description: </p> <p><%= space.description %> </p>
+    <p> Price per Night: <%= space.price %> </p>
+  </ul>
+  <% end %>
