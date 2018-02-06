@@ -1,3 +1,5 @@
+require 'pry'
+
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
@@ -12,11 +14,16 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/users' do
-    user = User.create(password: params[:password],
+    user = User.new(password: params[:password],
                 name: params[:name],
                 username: params[:username])
-    session[:user_id] = user.id
-    redirect '/users'
+    if user.save
+      session[:user_id] = user.id
+      redirect to('/users')
+    else
+      session[:error] = true
+      redirect to('/')
+    end
   end
 
   get '/users' do
