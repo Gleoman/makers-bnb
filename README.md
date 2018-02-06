@@ -92,6 +92,15 @@ As a user
 So that I can log back in  
 I want my user details to be saved
 ```
+
+##### **User Story 11 - Password encryption
+
+```
+As a user
+So I don't need to worry about password security
+I want my password to be encrypted
+```
+
 ## Usage
 
 Create two databases, dwellbnb-test and dwellbnb-development.
