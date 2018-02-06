@@ -14,3 +14,10 @@ def list_space(name, description, price)
   fill_in 'price', with: price
   click_button 'List space'
 end
+
+def log_in(username: 'Ed', password: 'Banana')
+  visit '/sessions/new'
+  fill_in('password', with: password)
+  fill_in('username', with: username)
+  click_button 'Log in'
+end
