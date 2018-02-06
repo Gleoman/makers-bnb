@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
-require './app/models/database_setup.rb'
+require './database_setup.rb'
 
 class DwellBNB < Sinatra::Base
 
@@ -29,7 +29,9 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    Space.create(name: params[:name])
+    Space.create(name: params[:name],
+                description: params[:description],
+                price: params[:price])
     redirect '/spaces'
   end
 

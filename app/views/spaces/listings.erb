@@ -1,5 +1,7 @@
 <% @listings.each do |space| %>
-  <li>
-    <%= space.name %> listed
-  </li>
+  <ul>
+    <h1><%= space.name %> listed </h1>
+    <p> Description: </p> <p><%= space.description %> </p>
+    <p> Price per Night: <%= space.price %> </p>
+  </ul>
   <% end %>
