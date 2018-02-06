@@ -3,5 +3,9 @@
     <h1><%= space.name %> listed </h1>
     <p> Description: </p> <p><%= space.description %> </p>
     <p> Price per Night: <%= space.price %> </p>
+    <p> Availability: </p>
+    <% space.availabilities.each do |availability| %>
+      <%= availability.date.strftime('%d/%m/%Y') %>
+    <% end %>
   </ul>
   <% end %>

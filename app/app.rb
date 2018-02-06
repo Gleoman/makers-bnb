@@ -1,4 +1,5 @@
 require 'pry'
+require './app/views/view_helpers'
 
 ENV['RACK_ENV'] ||= 'development'
 
@@ -17,13 +18,7 @@ class DwellBNB < Sinatra::Base
     user = User.new(password: params[:password],
                 name: params[:name],
                 username: params[:username])
-    if user.save
-      session[:user_id] = user.id
-      redirect to('/users')
-    else
-      session[:error] = true
-      redirect to('/')
-    end
+    valid_user(user)
   end
 
   get '/users' do
@@ -36,9 +31,11 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/spaces' do
-    Space.create(name: params[:name],
+    space = Space.new(name: params[:name],
                 description: params[:description],
                 price: params[:price])
+    add_availability(space)
+    space.save
     redirect '/spaces'
   end
 

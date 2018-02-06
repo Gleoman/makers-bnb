@@ -20,4 +20,14 @@ feature 'a user can list space' do
     list_space("Phil's space", "A decadent room compelete with hot tub and water bed", "£2,000")
     expect(page).to have_content "Phil's space" && "A decadent room compelete with hot tub and water bed" && "£2,000"
   end
+
+  scenario 'adding availability to a space' do
+    visit '/spaces/new'
+    fill_in 'name', with: 'Ed\'s space'
+    fill_in 'description', with: 'small'
+    fill_in 'price', with: '£50'
+    fill_in 'availability', with: '13/2/2018'
+    click_button 'List space'
+    expect(page).to have_content '13/02/2018'
+  end
 end
