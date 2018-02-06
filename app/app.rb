@@ -3,11 +3,14 @@ require 'pry'
 ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require './database_setup.rb'
 
 class DwellBNB < Sinatra::Base
 
   enable :sessions
+  set :session_secret, '7a929c0c04b166475878f813dd25d869b5ad4e631eed3194edb2555e22039a94'
+  register Sinatra::Flash
 
   helpers do
     def current_user
@@ -27,8 +30,8 @@ class DwellBNB < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/users')
     else
-      session[:error] = true
-      redirect to('/')
+      flash.now[:errors] = user.errors.full_messages
+      erb :index
     end
   end
 
@@ -63,7 +66,7 @@ class DwellBNB < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/')
     else
-      # flash.now[:errors] = ['The email or password is incorrect']
+      flash.now[:errors] = ['The email or password is incorrect']
       erb :'sessions/new'
     end
   end

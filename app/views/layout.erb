@@ -1,0 +1,15 @@
+<% if flash[:errors] && !flash[:errors].empty? %>
+  <div class='alert alert-success'>
+    Sorry, we need to try again:
+    <% flash[:errors].each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+</div>
+<% end %>
+
+
+<% if current_user %>
+  <h1> Welcome,  <%= current_user.name %></h1>
+<% end %>
+
+<%= yield%>

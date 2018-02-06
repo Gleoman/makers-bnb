@@ -8,8 +8,7 @@ feature 'sign up' do
   scenario 'user tries to sign-up twice with same details' do
     sign_up
     expect { sign_up } .to change(User, :count). by(0)
-    expect(page).to have_content('Username in use')
-    expect(current_path).to eq '/'
+    expect(page).to have_content('Username is already taken')
   end
 
   scenario 'Expect user count to have increased by one' do
