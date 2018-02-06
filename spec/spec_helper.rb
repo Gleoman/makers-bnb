@@ -1,6 +1,8 @@
 ENV['RACK_ENV'] = 'test'
 
 require './app/app'
+require './app/models/user'
+require './spec/helpers/user_helper'
 require 'capybara'
 require 'capybara/rspec'
 require 'database_cleaner'
@@ -18,6 +20,9 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 SimpleCov.start
 
 RSpec.configure do |config|
+
+  config.include UserHelpers
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
