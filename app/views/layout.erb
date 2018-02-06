@@ -6,10 +6,17 @@
     <% end %>
 </div>
 <% end %>
+<%if flash[:notice]%>
+<%= flash[:notice] %>
+<% end %>
 
 
 <% if current_user %>
   <h1> Welcome,  <%= current_user.name %></h1>
+  <form action="/sessions" method='post' class='logout'>
+      <input type="hidden" name='_method' value='delete'>
+      <input type="submit" value="Sign out"></button>
+    </form>
 <% end %>
 
 <%= yield%>

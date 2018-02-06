@@ -11,6 +11,7 @@ class DwellBNB < Sinatra::Base
   enable :sessions
   set :session_secret, '7a929c0c04b166475878f813dd25d869b5ad4e631eed3194edb2555e22039a94'
   register Sinatra::Flash
+  use Rack::MethodOverride
 
   helpers do
     def current_user
@@ -69,6 +70,13 @@ class DwellBNB < Sinatra::Base
       flash.now[:errors] = ['The email or password is incorrect']
       erb :'sessions/new'
     end
+  end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    p current_user
+    flash.keep[:notice] = 'Goodbye !'
+    redirect to '/'
   end
 
 end
