@@ -9,6 +9,8 @@ def valid_user(user)
 end
 
 def add_availability(space)
-  availability = Availability.first_or_create(date: params[:availability])
-  space.availabilities << availability
+  params[:availability].split.each do |dates|
+    availability = Availability.first_or_create(date: dates)
+    space.availabilities << availability
+  end
 end

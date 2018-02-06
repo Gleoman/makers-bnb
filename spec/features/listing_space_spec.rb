@@ -26,8 +26,8 @@ feature 'a user can list space' do
     fill_in 'name', with: 'Ed\'s space'
     fill_in 'description', with: 'small'
     fill_in 'price', with: '£50'
-    fill_in 'availability', with: '13/2/2018'
+    fill_in 'availability', with: '13/2/2018, 14/2/2018, 15/02/2018'
     click_button 'List space'
-    expect(page).to have_content '13/02/2018'
+    expect(page).to have_content '13/02/2018' && '14/02/2018' && '15/02/2018'
   end
 end
