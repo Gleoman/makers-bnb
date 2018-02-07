@@ -79,4 +79,8 @@ class DwellBNB < Sinatra::Base
     Space.remove_availability(params[:space_id], params[:availability_id])
     redirect to '/spaces'
   end
+
+  get '/bookings/new' do
+    erb :'bookings/new'
+  end
 end
