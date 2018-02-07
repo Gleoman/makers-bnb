@@ -8,6 +8,8 @@ class User
   property :username,        Text, required: true, unique: true
   property :password_digest, Text, required: true
 
+  has n, :bookings
+
   attr_reader :password
 
   def password=(password)
