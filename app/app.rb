@@ -65,13 +65,13 @@ class DwellBNB < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
-    p current_user
     flash.keep[:notice] = 'Goodbye !'
     redirect to '/'
   end
 
   get '/bookings/new' do
     erb :'bookings/new'
+    
   end
 
 end

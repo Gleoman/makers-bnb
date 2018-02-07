@@ -1,1 +1,5 @@
-Book Space
+<% if !current_user %>
+You can't book without signing in
+ <% else %>
+ Book Space
+<% end %>
