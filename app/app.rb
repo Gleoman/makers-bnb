@@ -75,4 +75,8 @@ class DwellBNB < Sinatra::Base
     space_availability.destroy
     redirect to '/spaces'
   end
+
+  get '/bookings/new' do
+    erb :'bookings/new'
+  end
 end
