@@ -7,4 +7,9 @@ class Space
   property :price, Numeric, required: true
 
   has n, :availabilities, :through => Resource
+
+  def self.remove_availability(space_id, availability_id)
+    space_availability = AvailabilitySpace.get(space_id, availability_id)
+    space_availability.destroy
+  end
 end
