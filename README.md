@@ -16,7 +16,7 @@ DwellBnB has been developed on the basis of the following User Stories:
 ##### **User Story 1 - Sign-up**
 
 ```
-As a user  
+As a user
 So I can list my space  
 I want to sign up
 ```
@@ -32,7 +32,7 @@ I want to be able to list my space
 ##### **User Story 3 - List multiple spaces**
 
 ```
-As a user  
+As a user
 So I can make money  
 I want to be able to list multiple spaces
 ```
@@ -72,7 +72,7 @@ I want to be able to request a space
 ##### **User Story 8 - Removal of availability**
 
 ```
-As an owner  
+As a user  
 So that I can review multiple requests  
 I do not want availability to be removed until I have confirmed a booking
 ```
@@ -99,6 +99,129 @@ I want my user details to be saved
 As a user
 So I don't need to worry about password security
 I want my password to be encrypted
+```
+
+#### **_E-Mail User Stories_**
+
+The following user stories all involve email functionality:
+
+##### **User Story 12 - E-mail sign-up confirmation**
+
+```
+As an user  
+So I know my account has been created  
+I want to receive confirmation by email
+```
+
+##### **User Story 13 - E-mail listing creation confirmation**
+
+```
+As an user  
+So I know my listing has been created  
+I want to receive confirmation by email
+```
+
+##### **User Story 14 - E-mail listing update confimation**
+
+```
+As a user  
+So that I know my listing has been updated  
+I want to receive confirmation by email
+```
+
+##### **User Story 15 - E-mail notification to owner of booking request**
+
+```
+As a user
+So that I know if someone has requested to book my space
+I want to receive notification of that request by email
+```
+
+##### **User Story 16 - E-mail notification to owner of their acceptance of booking acceptance**
+
+```
+As a user  
+So that I know my booking request has been accepted by the owner
+I want to receive notification by email
+```
+
+##### **User Story 17 - E-mail notification to customer of the submission of their booking request**
+
+```
+As a user
+So that I know my booking request has been submitted to the owner
+I want to receive notification by email
+```
+
+##### **User Story 18 - E-mail notification to customer of owner's acceptance of their booking request**
+
+```
+As a user  
+So that I know if my booking request has been accepted by the owner
+I want to receive notification by email
+```
+
+##### **User Story 19 - E-mail notification to customer of denial of their booking request**
+
+```
+As a user
+So that I know if my booking request has been denied
+I want to receive notification by email
+```
+
+
+#### **_SMS User Stories_**
+
+##### **User Story 20 - SMS notification to owner of booking request**
+
+```
+As a user
+So that I know if someone has requested to book my space
+I want to receive notification of that request by SMS
+```
+
+##### **User Story 21 - SMS notification to customer of owner's acceptance of their booking request**
+
+```
+As a user  
+So that I know if my booking request has been accepted by the owner
+I want to receive notification by SMS
+```
+
+##### **User Story 22 - SMS notification to customer of denial of their booking request**
+
+```
+As a user
+So that I know if my booking request has been denied
+I want to receive notification by SMS
+```
+
+#### **_Chat User Stories_**
+
+##### **User Story 23 - Chat - upon booking acceptance, a chatbox pops up for the parties to chat to each other**
+
+```
+As a user
+So that I can discuss a confimed booking with the other side
+I want to be able to chat to them upon acceptance
+```
+
+#### **_Payment User Stories_**
+
+##### **User Story 24 - Payment - user makes paymnent via Stripe**
+
+```
+As a user
+So that I can make payment for a space
+I want to be able to pay through Stripe 
+```
+
+##### **User Story 25 - Payment - user receives payment from user via Stripe**
+
+```
+As a user
+So that I can receive payment for a space
+I want to be able to accept payment through Stripe 
 ```
 
 ## Usage
