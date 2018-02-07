@@ -30,7 +30,7 @@ def log_in(username: 'Ed', password: 'Banana')
   click_button 'Log in'
 end
 
-def list_space_with_date
+def list_space_with_date2
  visit '/spaces/new'
  fill_in 'name', with: 'Ed\'s space'
  fill_in 'description', with: 'small'

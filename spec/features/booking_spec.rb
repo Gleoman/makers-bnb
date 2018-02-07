@@ -2,7 +2,7 @@ feature 'a user can book a space' do
 
   scenario 'A can choose a space they want to book' do
     sign_up
-    list_space_with_date
+    list_space_with_date2
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(current_path).to eq '/bookings/new'
@@ -10,7 +10,7 @@ feature 'a user can book a space' do
   end
 
   scenario 'User cant book a space without signing in' do
-    list_space_with_date
+    list_space_with_date2
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(page).to have_content("You can't book without signing in")
@@ -18,7 +18,7 @@ feature 'a user can book a space' do
 
   scenario 'A user can request to book a space' do
     sign_up
-    list_space_with_date
+    list_space_with_date2
     visit '/spaces'
     click_button 'Book Ed\'s space'
     fill_in 'date from', with: "2017-02-11"
