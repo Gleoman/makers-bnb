@@ -22,7 +22,13 @@ class DwellBNB < Sinatra::Base
     user = User.new(password: params[:password],
                 name: params[:name],
                 username: params[:username])
-    valid_user(user)
+    if user.save
+      session[:user_id] = user.id
+      redirect to('/users')
+    else
+      flash.now[:errors] = user.errors.full_messages
+      erb :index
+    end
   end
 
   get '/users' do
@@ -69,6 +75,11 @@ class DwellBNB < Sinatra::Base
     redirect to '/'
   end
 
+  delete '/availability' do
+    Space.remove_availability(params[:space_id], params[:availability_id])
+    redirect to '/spaces'
+  end
+
   get '/bookings/new' do
     erb :'bookings/new'
   end
@@ -91,5 +102,4 @@ class DwellBNB < Sinatra::Base
     @space = Space.get(@booking.space_id)
     erb :'bookings/request_confirmation'
   end
-
 end
