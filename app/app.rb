@@ -75,7 +75,7 @@ class DwellBNB < Sinatra::Base
     redirect to '/'
   end
 
-  delete '/book' do
+  delete '/availability' do
     Space.remove_availability(params[:space_id], params[:availability_id])
     redirect to '/spaces'
   end
