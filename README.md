@@ -137,7 +137,7 @@ So that I know if someone has requested to book my space
 I want to receive notification of that request by email
 ```
 
-##### **User Story 16 - E-mail notification to owner of their acceptance of booking acceptance**
+##### **User Story 16 - E-mail notification to owner of their acceptance of booking**
 
 ```
 As a user  
