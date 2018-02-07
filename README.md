@@ -172,6 +172,8 @@ I want to receive notification by email
 
 #### **_SMS User Stories_**
 
+The following user stories all involve SMS functionality:
+
 ##### **User Story 20 - SMS notification to owner of booking request**
 
 ```
@@ -196,7 +198,7 @@ So that I know if my booking request has been denied
 I want to receive notification by SMS
 ```
 
-#### **_Chat User Stories_**
+#### **_Chat User Story_**
 
 ##### **User Story 23 - Chat - upon booking acceptance, a chatbox pops up for the parties to chat to each other**
 
@@ -207,6 +209,8 @@ I want to be able to chat to them upon acceptance
 ```
 
 #### **_Payment User Stories_**
+
+The following user stories involve payment functionality:
 
 ##### **User Story 24 - Payment - user makes paymnent via Stripe**
 
