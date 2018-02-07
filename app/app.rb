@@ -54,6 +54,15 @@ class DwellBNB < Sinatra::Base
     erb :'spaces/listings'
   end
 
+	post '/spaces/availability' do
+		@listings = []
+		params[:check_availability].split.each do |date|
+			d = Date.strptime(date, '%d/%m/%Y')
+			@listings << Space.all.availabilities(date: d).spaces.pop
+	  end
+		erb :'spaces/listings'
+	end
+
   get '/sessions/new' do
     erb :'sessions/new'
   end

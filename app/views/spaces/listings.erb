@@ -1,6 +1,15 @@
+<h1>Check Availability</h1>
+<form action='/spaces/availability' method='post'>
+	<label for='dates'>
+		Dates:
+		<input name='check_availability' type='text' required>
+		<input type="submit" value="Search">
+	</label>
+</form>
+
 <% @listings.each do |space| %>
-  <ul>
-    <h1><%= space.name %> listed </h1>
+	<ul>
+    <h2><%= space.name %> listed </h2>
     <p> Description: </p> <p><%= space.description %> </p>
     <p> Price per Night: <%= space.price %> </p>
     <p> Availability: </p>
