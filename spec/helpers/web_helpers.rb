@@ -1,4 +1,3 @@
-
 def sign_up
   visit '/'
   fill_in('password', :with => 'password1')
@@ -12,6 +11,15 @@ def list_space(name, description, price)
   fill_in 'name', with: name
   fill_in 'description', with: description
   fill_in 'price', with: price
+  click_button 'List space'
+end
+
+def list_space_with_date
+  visit '/spaces/new'
+  fill_in 'name', with: 'Ed\'s space'
+  fill_in 'description', with: 'small'
+  fill_in 'price', with: '£50'
+  fill_in 'availability', with: '13/2/2018, 14/2/2018, 15/02/2018'
   click_button 'List space'
 end
 

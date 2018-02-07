@@ -65,8 +65,14 @@ class DwellBNB < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
-    p current_user
     flash.keep[:notice] = 'Goodbye !'
     redirect to '/'
+  end
+
+  delete '/book' do
+    space_availability = AvailabilitySpace.get(params[:space_id],
+                                               params[:availability_id])
+    space_availability.destroy
+    redirect to '/spaces'
   end
 end
