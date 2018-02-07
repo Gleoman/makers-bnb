@@ -6,7 +6,7 @@
     <p> Availability: </p>
     <% space.availabilities.each do |availability| %>
       <%= availability.date.strftime('%d/%m/%Y') %>,
-      <form action="/book" method='post'>
+      <form action="/availability" method='post'>
         <input type="hidden" name='_method' value='delete'>
         <input type="hidden" name='space_id' value="<%= space.id %>" >
         <input type="hidden" name='availability_id' value="<%= availability.id %>">
