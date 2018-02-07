@@ -6,5 +6,5 @@ class Space
   property :description, Text, required: true
   property :price, Numeric, required: true
 
-  has n, :availabilities, :through => Resource
+  has n, :bookings
 end
