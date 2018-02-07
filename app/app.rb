@@ -69,4 +69,9 @@ class DwellBNB < Sinatra::Base
     flash.keep[:notice] = 'Goodbye !'
     redirect to '/'
   end
+
+  get '/bookings/new' do
+    erb :'bookings/new'
+  end
+
 end
