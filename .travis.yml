@@ -10,4 +10,4 @@ before_install:
 
 
 before_script:
-  - createdb dwellbnb-test
+  - createdb dwellbnb_test
