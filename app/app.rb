@@ -15,6 +15,7 @@ class DwellBNB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
+		@listings = Space.all
     erb :index
   end
 
@@ -27,6 +28,7 @@ class DwellBNB < Sinatra::Base
       redirect to('/users')
     else
       flash.now[:errors] = user.errors.full_messages
+			@listings = Space.all
       erb :index
     end
   end
@@ -43,7 +45,7 @@ class DwellBNB < Sinatra::Base
   post '/spaces' do
     space = Space.new(name: params[:name],
                 description: params[:description],
-                price: params[:price])
+                price: params[:price], picture_url: params[:picture_url])
     add_availability(space)
     space.save
     redirect '/spaces'
