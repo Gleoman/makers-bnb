@@ -21,15 +21,22 @@ feature 'a user can book a space' do
     list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-13"
-    fill_in 'date to', with: "2017-02-14"
+    fill_in 'date from', with: "2018-02-13"
+    fill_in 'date to', with: "2018-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
-    expect(page).to have_content 'Booking @ Ed\'s space requested for 13/02/2017 - 14/02/2017'
+    expect(page).to have_content 'Booking @ Ed\'s space requested for 13/02/2018 - 14/02/2018'
     expect(current_path).to eq '/bookings/request_confirmation'
   end
 
   scenario 'A user can\'t request a booking that is not available' do
-
+    sign_up
+    list_space_with_date
+    visit '/spaces'
+    click_button 'Book Ed\'s space'
+    fill_in 'date from', with: "2018-02-17"
+    fill_in 'date to', with: "2018-02-18"
+    click_button 'Request to book'
+    expect(page).to have_content 'Space is not available on those dates'
   end
 
   scenario 'A user can\'t request the same booking twice' do
@@ -37,13 +44,13 @@ feature 'a user can book a space' do
     list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-13"
-    fill_in 'date to', with: "2017-02-14"
+    fill_in 'date from', with: "2018-02-13"
+    fill_in 'date to', with: "2018-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-13"
-    fill_in 'date to', with: "2017-02-14"
+    fill_in 'date from', with: "2018-02-13"
+    fill_in 'date to', with: "2018-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
   end
 
