@@ -16,7 +16,7 @@ class DwellBNB < Sinatra::Base
 
   get '/' do
     @listings = Space.all
-    erb :index
+    erb :'spaces/listings'
   end
 
   post '/users' do
@@ -29,12 +29,12 @@ class DwellBNB < Sinatra::Base
     else
       flash.now[:errors] = user.errors.full_messages
 			@listings = Space.all
-      erb :index
+      erb :'users/new'
     end
   end
 
-  get 'users/new' do
-    erb 'users/new'
+  get '/users/new' do
+    erb :'users/new'
   end
 
   get '/spaces/new' do

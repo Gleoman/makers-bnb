@@ -2,7 +2,7 @@ feature 'sign up' do
   scenario 'filling in a form' do
     sign_up
     expect(page).to have_content('Hello Ed')
-    expect(current_path).to eq '/spaces'
+    expect(current_path).to eq '/'
   end
 
   scenario 'user tries to sign-up twice with same details' do
