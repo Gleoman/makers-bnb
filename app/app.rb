@@ -90,6 +90,7 @@ class DwellBNB < Sinatra::Base
   end
 
   get '/bookings/new' do
+    @space = Space.get(session[:space_id])
     erb :'bookings/new'
   end
 

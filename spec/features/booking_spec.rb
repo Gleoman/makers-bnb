@@ -54,13 +54,27 @@ feature 'a user can book a space' do
     expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
   end
 
-  scenario 'it removes the date booked' do
-    list_space_with_date
-    click_button 'Book 13/02/2018'
-    expect(current_path).to eq '/spaces'
-    expect(page).not_to have_content '13/02/2018'
-    expect(AvailabilitySpace.count).to eq 2
-  end
+  # scenario 'it removes the date booked when the owner confirms the booking' do
+  #   pending
+  #   sign_up
+  #   list_space_with_date
+  #   click_button('Sign out')
+  #
+  #   sign_up_as_customer
+  #   visit '/spaces'
+  #   click_button 'Book Ed\'s space'
+  #   expect(current_path).to eq '/bookings/new'
+  #   fill_in 'date from', with: "2018-02-13"
+  #   fill_in 'date to', with: "2018-02-14"
+  #   expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
+  #   click_button('Sign out')
+  #
+  #   log_in(username: 'ed01', password: 'password1')
+  #   visit '/booking/confirmation'
+  #   click_button('Confirm')
+  #
+  #   expect(AvailabilitySpace.count).to eq 1
+  # end
 end
 
 feature 'search for a space' do
