@@ -26,4 +26,16 @@ feature 'a user can list space' do
     expect(Availability.count).to eq 3
     expect(page).to have_content '13/02/2018' && '14/02/2018' && '15/02/2018'
   end
+
+	scenario 'adding pictures to a space' do
+		visit '/spaces/new'
+		fill_in 'name', with: 'Ed\'s space'
+		fill_in 'description', with: 'small'
+		fill_in 'price', with: '£50'
+		fill_in 'availability', with: '13/2/2018, 14/2/2018, 15/02/2018'
+		fill_in 'picture_url', with: 'https://i.imgur.com/NAymlu5.jpg, https://i.imgur.com/PgVpNx4.jpg?1'
+		click_button 'List space'
+		expect(page).to have_css("img[src*='https://i.imgur.com/NAymlu5.jpg']")
+		expect(page).to have_css("img[src*='https://i.imgur.com/PgVpNx4.jpg']")
+	end
 end

@@ -1,36 +1,42 @@
-<p/>
-
-<h2> Where do you want to stay today ???? <h2>
+<h1>Check Availability</h1>
+<form action='/spaces/availability' method='post'>
+	<label for='dates'>
+		Dates:
+		<input name='check_availability' type='text' required>
+		<input type="submit" value="Search">
+	</label>
+</form>
 
 <% @listings.each do |space| %>
   <div id="listing">
     <ul id="listing">
-    <h2><%= space.name %> listed </h2>
+    <h2><%= space.name %></h2>
     <br>
+    <form action="/bookings/new" method='post'>
+     <input type="hidden" name='space_id' value="<%= space.id %>" >
+     <input type="submit" value="Book <%= space.name %>">
+   </form>
+   <br>
     Description: <%= space.description %>
+    <br>
+		Picture:
+		<% space.picture_url.split(',').each do |picture| %>
+		 	<img src=<%= picture %>>
+		<% end %>
     <br>
     Price per Night: <%= space.price %>
     <br>
-    Availability:
-    <br>
+		Availability:
+
     <% space.availabilities.each do |availability| %>
       <%= availability.date.strftime('%d/%m/%Y') %>,
-
-      <form action="/bookings/new" method='post'>
-       <input type="hidden" name='space_id' value="<%= space.id %>" >
-       <input type="hidden" name='availability_id' value="<%= availability.id %>">
-       <input type="submit" value="Book <%= space.name %>">
-     </form>
-
-      <form action="/availability" method='post'>
+      <!-- <form action="/availability" method='post'>
         <input type="hidden" name='_method' value='delete'>
         <input type="hidden" name='space_id' value="<%= space.id %>" >
         <input type="hidden" name='availability_id' value="<%= availability.id %>">
         <input type="submit" value="Book <%= availability.date.strftime('%d/%m/%Y') %>"></button>
-      </form>
+      </form> -->
     <% end %>
-    <a href="/bookings/new">
-      <button>Book space</button>
-    </a>
   </ul>
+</div>
   <% end %>

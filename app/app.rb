@@ -15,11 +15,8 @@ class DwellBNB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
-    redirect '/spaces'
-  end
-
-  get '/users/new' do
-    erb :'users/new'
+    @listings = Space.all
+    erb :index
   end
 
   post '/users' do
@@ -31,8 +28,13 @@ class DwellBNB < Sinatra::Base
       redirect to('/')
     else
       flash.now[:errors] = user.errors.full_messages
-      erb :'users/new'
+			@listings = Space.all
+      erb :index
     end
+  end
+
+  get 'users/new' do
+    erb 'users/new'
   end
 
   get '/spaces/new' do
@@ -42,7 +44,7 @@ class DwellBNB < Sinatra::Base
   post '/spaces' do
     space = Space.new(name: params[:name],
                 description: params[:description],
-                price: params[:price])
+                price: params[:price], picture_url: params[:picture_url])
     add_availability(space)
     space.save
     redirect '/spaces'
@@ -52,6 +54,15 @@ class DwellBNB < Sinatra::Base
     @listings = Space.all
     erb :'spaces/listings'
   end
+
+	post '/spaces/availability' do
+		@listings = []
+		params[:check_availability].split.each do |date|
+			formatted_date = Date.strptime(date, '%d/%m/%Y')
+			@listings << Space.all.availabilities(date: formatted_date).spaces.pop
+	  end
+		erb :'spaces/listings'
+	end
 
   get '/sessions/new' do
     erb :'sessions/new'
@@ -84,6 +95,7 @@ class DwellBNB < Sinatra::Base
   end
 
   get '/bookings/new' do
+    @space = Space.get(session[:space_id])
     erb :'bookings/new'
   end
 
@@ -93,11 +105,16 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/bookings' do
-    booking = Booking.create(date_to: params[:'date to'], date_from: params[:'date from'],
-                          user_id: session[:user_id], space_id: session[:space_id]
-                         )
-    session[:booking_id] = booking.id
-    redirect '/bookings/request_confirmation'
+    if available?(session[:space_id], params[:'date from'], params[:'date to'])
+      booking = Booking.first_or_create(date_to: params[:'date to'], date_from: params[:'date from'],
+                            user_id: session[:user_id], space_id: session[:space_id]
+                           )
+      session[:booking_id] = booking.id
+      redirect '/bookings/request_confirmation'
+    else
+      flash.next[:notice] = 'Space is not available on those dates'
+      redirect '/bookings/new'
+    end
   end
 
   get '/bookings/request_confirmation' do
