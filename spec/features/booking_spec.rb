@@ -2,7 +2,7 @@ feature 'a user can book a space' do
 
   scenario 'A can choose a space they want to book' do
     sign_up
-    list_space_with_date2
+    list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(current_path).to eq '/bookings/new'
@@ -10,7 +10,7 @@ feature 'a user can book a space' do
   end
 
   scenario 'User cant book a space without signing in' do
-    list_space_with_date2
+    list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(page).to have_content("You can't book without signing in")
@@ -18,28 +18,32 @@ feature 'a user can book a space' do
 
   scenario 'A user can request to book a space' do
     sign_up
-    list_space_with_date2
+    list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-11"
-    fill_in 'date to', with: "2017-02-12"
+    fill_in 'date from', with: "2017-02-13"
+    fill_in 'date to', with: "2017-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
-    expect(page).to have_content 'Booking @ Ed\'s space requested for 11/02/2017 - 12/02/2017'
+    expect(page).to have_content 'Booking @ Ed\'s space requested for 13/02/2017 - 14/02/2017'
     expect(current_path).to eq '/bookings/request_confirmation'
+  end
+
+  scenario 'A user can\'t request a booking that is not available' do
+
   end
 
   scenario 'A user can\'t request the same booking twice' do
     sign_up
-    list_space_with_date2
+    list_space_with_date
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-11"
-    fill_in 'date to', with: "2017-02-12"
+    fill_in 'date from', with: "2017-02-13"
+    fill_in 'date to', with: "2017-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
     visit '/spaces'
     click_button 'Book Ed\'s space'
-    fill_in 'date from', with: "2017-02-11"
-    fill_in 'date to', with: "2017-02-12"
+    fill_in 'date from', with: "2017-02-13"
+    fill_in 'date to', with: "2017-02-14"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
   end
 
