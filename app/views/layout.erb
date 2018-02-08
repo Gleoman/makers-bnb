@@ -4,7 +4,8 @@
     <title> DwellBnB </title>
     <link href='/css/app.css' rel='stylesheet' type='text/css'>
   </head>
-<header>
+  <body>
+  <div class="image">
   <nav>
     <ul id='navigation'>
       <li><a href="/">Home</a></li>
@@ -14,7 +15,7 @@
 
       <% if !current_user %>
         <li><a href="/sessions/new">Sign in</a></li>
-        <li><a href="/">Sign up</a></li>
+        <li><a href="/users/new">Sign up</a></li>
       <% end %>
 
       <% if current_user %>
@@ -22,21 +23,22 @@
       <% end %>
     </ul>
   </nav>
-</header>
-
-<body>
 
 <% if flash[:errors] && !flash[:errors].empty? %>
   <div class='alert alert-success'>
     Sorry, we need to try again:
+    <br>
     <% flash[:errors].each do |e| %>
-      <li><%= e %></li>
+      <p></p>
+      <%= e %>
     <% end %>
   </div>
 <% end %>
 
 <%if flash[:notice]%>
-<%= flash[:notice] %>
+  <div class='alert alert-success'>
+  <%= flash[:notice] %>
+    </div>
 <% end %>
 
 <% if current_user %>
@@ -45,9 +47,7 @@
    <h2> Welcome to DwellBnB </h2>
 <% end %>
 
-<div>
   <%= yield%>
-</div>
 
 </body>
 </html>
