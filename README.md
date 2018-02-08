@@ -230,5 +230,5 @@ I want to be able to accept payment through Stripe
 
 ## Usage
 
-Create two databases, dwellbnb-test and dwellbnb-development.
+Create two databases, dwellbnb_test and dwellbnb_development.
 
