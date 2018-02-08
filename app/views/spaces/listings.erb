@@ -8,19 +8,26 @@
 </form>
 
 <% @listings.each do |space| %>
-	<ul>
+  <div id="listing">
+    <ul id="listing">
     <h2><%= space.name %></h2>
+    <br>
     <form action="/bookings/new" method='post'>
      <input type="hidden" name='space_id' value="<%= space.id %>" >
      <input type="submit" value="Book <%= space.name %>">
    </form>
-    <p> Description: </p> <p><%= space.description %> </p>
-		<p> Picture: </p>
+   <br>
+    Description: <%= space.description %>
+    <br>
+		Picture:
 		<% space.picture_url.split(',').each do |picture| %>
 		 	<img src=<%= picture %>>
 		<% end %>
-    <p> Price per Night: <%= space.price %> </p>
-		<p> Availability: </p>
+    <br>
+    Price per Night: <%= space.price %>
+    <br>
+		Availability:
+
     <% space.availabilities.each do |availability| %>
       <%= availability.date.strftime('%d/%m/%Y') %>,
       <!-- <form action="/availability" method='post'>
@@ -31,4 +38,5 @@
       </form> -->
     <% end %>
   </ul>
+</div>
   <% end %>

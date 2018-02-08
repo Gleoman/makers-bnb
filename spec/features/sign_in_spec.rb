@@ -8,7 +8,7 @@ feature 'User log in' do
 
   scenario 'with correct credentials' do
     log_in
-    expect(page).to have_content "Welcome, Ed"
+    expect(page).to have_content "Hello Ed! Welcome to DwellBnB"
   end
   scenario 'with incorrect credentials' do
     log_in(password: 'Courgette')
@@ -27,8 +27,9 @@ feature 'User signs out' do
 
   scenario 'while being signed in' do
     log_in(username: 'Ed', password: 'Banana')
+    click_link 'Sign out'
     click_button 'Sign out'
-    expect(page).to have_content('Goodbye !')
-    expect(page).not_to have_content('Welcome, Ed')
+    expect(page).to have_content('Thanks for stopping by !')
+    expect(page).not_to have_content('Hello Ed')
   end
 end

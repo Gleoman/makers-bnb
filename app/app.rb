@@ -15,8 +15,8 @@ class DwellBNB < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
-		@listings = Space.all
-    erb :index
+    @listings = Space.all
+    erb :'spaces/listings'
   end
 
   post '/users' do
@@ -25,17 +25,16 @@ class DwellBNB < Sinatra::Base
                 username: params[:username])
     if user.save
       session[:user_id] = user.id
-      redirect to('/users')
+      redirect to('/')
     else
       flash.now[:errors] = user.errors.full_messages
 			@listings = Space.all
-      erb :index
+      erb :'users/new'
     end
   end
 
-  get '/users' do
-    @name = User.get(session[:user_id]).name
-    erb :users
+  get '/users/new' do
+    erb :'users/new'
   end
 
   get '/spaces/new' do
@@ -69,6 +68,10 @@ class DwellBNB < Sinatra::Base
     erb :'sessions/new'
   end
 
+  get '/sessions/sign_out' do
+    erb :'sessions/sign_out'
+  end
+
   post '/sessions' do
     user = User.authenticate(params[:username], params[:password])
     if user
@@ -82,7 +85,7 @@ class DwellBNB < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
-    flash.keep[:notice] = 'Goodbye !'
+    flash.keep[:notice] = 'Thanks for stopping by !'
     redirect to '/'
   end
 
@@ -119,4 +122,5 @@ class DwellBNB < Sinatra::Base
     @space = Space.get(@booking.space_id)
     erb :'bookings/request_confirmation'
   end
+
 end

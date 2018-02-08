@@ -1,0 +1,134 @@
+html {
+  background: linear-gradient(#00CCFF, #0099FF) no-repeat fixed;
+  background-image: url(https://i.imgur.com/H25Wt3A.jpg);
+  background-repeat: center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: Palatino, Arial;
+  color: white;
+}
+
+body {
+  font-weight: bolder;
+  margin: 20px;
+}
+
+p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 50px;
+  text-shadow: 1px 1px #000000;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 50px;
+  text-shadow: 1px 1px #000000;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h3 {
+  font-size: 25px;
+  text-shadow: 1px 1px #000000;
+  text-align: center;
+  margin: 10px;
+}
+
+ ul{
+   list-style-type: none;
+   font-size: 18px;
+   margin-bottom: 51px;
+ }
+
+ element.style {
+    margin-bottom: 51px;
+}
+
+.navigation{
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+
+
+li {
+    float: left;
+    display: block;
+    padding: 0;
+    padding-left:9%;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+li a:hover {
+    background-color: #111;
+}
+.active {
+}
+
+#listing ul {
+  text-align: center
+  font-size: px;
+  font-family: Palatino;
+  font-weight: normal;
+  border: 3px solid white;
+  width: 500px;
+  padding-top: 0px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  text-align: center;
+  color: white;
+  margin: auto;
+}
+
+/* .post {
+  text-align: center
+  font-size: 20px;
+  font-style: italic;
+  color: white;
+} */
+
+.alert {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  font-size: 25px;
+  text-shadow: 1px 1px #000000;
+  text-align: center;
+}
+
+form {
+  margin: auto;
+  width: 150px;
+  font-size: 20px;
+}
+
+input[type="submit"]:hover {
+      border: none;
+      background-color: black;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      border-radius: 12px;
+      font-size: 20px;
+      -webkit-transition-duration: 0.4s;
+      transition-duration: 0.4s;
+  }
