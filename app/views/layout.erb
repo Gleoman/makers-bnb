@@ -1,22 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> DwellBnB </title>
+    <link href='/css/app.css' rel='stylesheet' type='text/css'>
+
+  </head>
+
+  <body>
+
+    <ul id='navigation'>
+      <li><a href="/">Home</a></li>
+      <li><a href="/spaces">View available spaces</a></li>
+      <li><a href="/bookings/new">Make a booking</a></li>
+      <li><a href="/spaces/new">List a space</a></li>
+
+      <% if !current_user %>
+        <li><a href="/sessions/new">Sign in</a></li>
+        <li><a href="/">Sign up</a></li>
+      <% end %>
+
+      <% if current_user %>
+        <li style="float:right"><a class="active" href="/sessions/sign_out">Sign out</a></li>
+      <% end %>
+
+    </ul>
+
+
 <% if flash[:errors] && !flash[:errors].empty? %>
   <div class='alert alert-success'>
     Sorry, we need to try again:
     <% flash[:errors].each do |e| %>
       <li><%= e %></li>
     <% end %>
-</div>
+  </div>
 <% end %>
+
 <%if flash[:notice]%>
 <%= flash[:notice] %>
 <% end %>
 
-
 <% if current_user %>
   <h1> Welcome,  <%= current_user.name %></h1>
-  <form action="/sessions" method='post' class='logout'>
-      <input type="hidden" name='_method' value='delete'>
-      <input type="submit" value="Sign out"></button>
-    </form>
 <% end %>
 
 <%= yield%>
+
+</body>
+</html>

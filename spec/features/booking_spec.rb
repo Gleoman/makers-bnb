@@ -6,7 +6,8 @@ feature 'a user can book a space' do
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(current_path).to eq '/bookings/new'
-    expect(page).to have_content 'Book Space'
+    expect(page).to have_content 'Date from'
+    expect(page).to have_content 'Date to'
   end
 
   scenario 'User cant book a space without signing in' do

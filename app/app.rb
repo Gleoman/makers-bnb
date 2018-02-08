@@ -58,6 +58,10 @@ class DwellBNB < Sinatra::Base
     erb :'sessions/new'
   end
 
+  get '/sessions/sign_out' do
+    erb :'sessions/sign_out'
+  end
+
   post '/sessions' do
     user = User.authenticate(params[:username], params[:password])
     if user
@@ -102,4 +106,5 @@ class DwellBNB < Sinatra::Base
     @space = Space.get(@booking.space_id)
     erb :'bookings/request_confirmation'
   end
+
 end

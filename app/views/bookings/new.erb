@@ -1,6 +1,7 @@
 <% if !current_user %>
 You can't book without signing in
  <% else %>
+
  Book Space
  <form action='/bookings' method='post'>
    <label for='date from'>
@@ -12,7 +13,3 @@ You can't book without signing in
    <input type='submit' value='Request to book'>
  </form>
 <% end %>
-
-<a href="/sessions/new">
-  <button>Login</button>
-</a>
