@@ -28,6 +28,21 @@ feature 'a user can book a space' do
     expect(current_path).to eq '/bookings/request_confirmation'
   end
 
+  scenario 'A user can\'t request the same booking twice' do
+    sign_up
+    list_space_with_date2
+    visit '/spaces'
+    click_button 'Book Ed\'s space'
+    fill_in 'date from', with: "2017-02-11"
+    fill_in 'date to', with: "2017-02-12"
+    expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
+    visit '/spaces'
+    click_button 'Book Ed\'s space'
+    fill_in 'date from', with: "2017-02-11"
+    fill_in 'date to', with: "2017-02-12"
+    expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
+  end
+
   scenario 'it removes the date booked' do
     list_space_with_date
     click_button 'Book 13/02/2018'

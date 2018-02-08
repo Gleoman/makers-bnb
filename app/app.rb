@@ -99,7 +99,7 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/bookings' do
-    booking = Booking.create(date_to: params[:'date to'], date_from: params[:'date from'],
+    booking = Booking.first_or_create(date_to: params[:'date to'], date_from: params[:'date from'],
                           user_id: session[:user_id], space_id: session[:space_id]
                          )
     session[:booking_id] = booking.id
