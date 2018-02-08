@@ -1,7 +1,7 @@
 feature 'sign up' do
   scenario 'filling in a form' do
     sign_up
-    expect(page).to have_content('Welcome, Ed')
+    expect(page).to have_content('Hello Ed')
     expect(current_path).to eq '/users'
   end
 

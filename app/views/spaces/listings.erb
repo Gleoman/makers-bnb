@@ -1,6 +1,8 @@
+<h2> Where do you want to stay today ???? <h2>
+  
 <% @listings.each do |space| %>
     <ul id='listings'>
-    <h1><%= space.name %> listed </h1>
+    <h2><%= space.name %> listed </h2>
     <p> Description: </p> <p><%= space.description %> </p>
     <p> Price per Night: <%= space.price %> </p>
     <p> Availability: </p>

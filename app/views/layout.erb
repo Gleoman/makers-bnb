@@ -3,11 +3,9 @@
   <head>
     <title> DwellBnB </title>
     <link href='/css/app.css' rel='stylesheet' type='text/css'>
-
   </head>
-
-  <body>
-
+<header>
+  <nav>
     <ul id='navigation'>
       <li><a href="/">Home</a></li>
       <li><a href="/spaces">View available spaces</a></li>
@@ -20,11 +18,13 @@
       <% end %>
 
       <% if current_user %>
-        <li style="float:right"><a class="active" href="/sessions/sign_out">Sign out</a></li>
+      <li><a href="/sessions/sign_out">Sign out</a></li>
       <% end %>
-
     </ul>
+  </nav>
+</header>
 
+<body>
 
 <% if flash[:errors] && !flash[:errors].empty? %>
   <div class='alert alert-success'>
@@ -40,10 +40,14 @@
 <% end %>
 
 <% if current_user %>
-  <h1> Welcome,  <%= current_user.name %></h1>
+<br></br>
+  <h1> Hello  <%= current_user.name %>!</h1>
+   <h2> Welcome to DwellBnB </h2>
 <% end %>
 
-<%= yield%>
+<div>
+  <%= yield%>
+</div>
 
 </body>
 </html>

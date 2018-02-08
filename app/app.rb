@@ -75,7 +75,7 @@ class DwellBNB < Sinatra::Base
 
   delete '/sessions' do
     session[:user_id] = nil
-    flash.keep[:notice] = 'Goodbye !'
+    flash.keep[:notice] = 'Thanks for stopping by !'
     redirect to '/'
   end
 

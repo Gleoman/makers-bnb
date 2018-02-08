@@ -3,17 +3,18 @@ html {
   background-size: cover;
   font-family: Palatino, Arial;
   color: white;
-  /* background: repeating-radial-gradient(
+  /* background: radial-gradient(
   circle,
   goldenrod,
-  gold 10px,
+  red 10px,
   silver 10px,
-  black 20px
-); */
+  pink 20px */
+);
 }
 
 body {
   font-weight: bolder;
+  margin: 20px;
 }
 
 p {
@@ -21,17 +22,11 @@ p {
   font-weight: bold;
 }
 
-header {
-  font-size: 25px;
-  font-family: Palatino;
-  font-weight: bolder;
-  text-shadow: 1px 1px #000000;
-}
-
 h1 {
   font-size: 50px;
   text-shadow: 1px 1px #000000;
   text-align: center;
+  margin: 50px;
 }
 
 h2 {
@@ -40,8 +35,16 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-size: 25px;
+  text-shadow: 1px 1px #000000;
+  text-align: center;
+}
+
  ul{
    list-style-type: none;
+   /* top: 0;
+   width: 100%; */
  }
 
 .navigation{
@@ -57,6 +60,9 @@ h2 {
 
 li {
     float: left;
+    display: block;
+    padding: 0;
+    padding-left:10%;
 }
 
 li a {
