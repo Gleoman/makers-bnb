@@ -32,6 +32,14 @@ def log_in(username: 'Ed', password: 'Banana')
   click_button 'Log in'
 end
 
+def sign_up_as_customer
+  visit '/'
+  fill_in('password', :with => 'password1')
+  fill_in('name', :with => 'Customer Bob')
+  fill_in('username', :with => 'Bob')
+  click_button 'Sign up'
+end
+
 def list_space_with_date2
  visit '/spaces/new'
  fill_in 'name', with: 'Ed\'s space'

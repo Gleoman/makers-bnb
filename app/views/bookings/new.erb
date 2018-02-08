@@ -1,7 +1,16 @@
 <% if !current_user %>
-You can't book without signing in
- <% else %>
+  You can't book without signing in
+<% else %>
  Book Space
+ <ul>
+   <h2><%= @space.name %></h2>
+   <p> Description: </p> <p><%= @space.description %> </p>
+   <p> Price per Night: <%= @space.price %> </p>
+ 	<!-- <p> Availability: </p>
+   <% @space.availabilities.each do |availability| %>
+     <%= availability.date.strftime('%d/%m/%Y') %>,
+   <% end %> -->
+ </ul>
  <form action='/bookings' method='post'>
    <label for='date from'>
      Date from: <input name='date from' type='date'>
@@ -12,7 +21,3 @@ You can't book without signing in
    <input type='submit' value='Request to book'>
  </form>
 <% end %>
-
-<a href="/sessions/new">
-  <button>Login</button>
-</a>

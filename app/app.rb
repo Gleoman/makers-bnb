@@ -92,6 +92,7 @@ class DwellBNB < Sinatra::Base
   end
 
   get '/bookings/new' do
+    @space = Space.get(session[:space_id])
     erb :'bookings/new'
   end
 
@@ -101,11 +102,16 @@ class DwellBNB < Sinatra::Base
   end
 
   post '/bookings' do
-    booking = Booking.create(date_to: params[:'date to'], date_from: params[:'date from'],
-                          user_id: session[:user_id], space_id: session[:space_id]
-                         )
-    session[:booking_id] = booking.id
-    redirect '/bookings/request_confirmation'
+    if available?(session[:space_id], params[:'date from'], params[:'date to'])
+      booking = Booking.first_or_create(date_to: params[:'date to'], date_from: params[:'date from'],
+                            user_id: session[:user_id], space_id: session[:space_id]
+                           )
+      session[:booking_id] = booking.id
+      redirect '/bookings/request_confirmation'
+    else
+      flash.next[:notice] = 'Space is not available on those dates'
+      redirect '/bookings/new'
+    end
   end
 
   get '/bookings/request_confirmation' do
