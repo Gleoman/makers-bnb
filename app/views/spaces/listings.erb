@@ -1,27 +1,23 @@
 <h1>Check Availability</h1>
-<form action='/spaces/availability' method='post'>
+<form action='/spaces/availability' method='post' id = 'availability'>
 	<label for='dates'>
 		Dates:
-		<input name='check_availability' type='text' required>
+		<input name='check_availability' type='text' required value="Search...">
 		<input type="submit" value="Search">
 	</label>
 </form>
 
 <% @listings.each do |space| %>
-  <div id="listing">
-    <ul id="listing">
+  <div class="listing">
+    <ul>
     <h2><%= space.name %></h2>
-    <br>
-    <form action="/bookings/new" method='post'>
+    <form action="/bookings/new" method='post' class = 'book'>
      <input type="hidden" name='space_id' value="<%= space.id %>" >
      <input type="submit" value="Book <%= space.name %>">
    </form>
-   <br>
     Description: <%= space.description %>
-    <br>
-		Picture:
 		<% space.picture_url.split(',').each do |picture| %>
-		 	<img src=<%= picture %>>
+			<img src=<%= picture %>>
 		<% end %>
     <br>
     Price per Night: <%= space.price %>
