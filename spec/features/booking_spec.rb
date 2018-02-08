@@ -24,7 +24,7 @@ feature 'a user can book a space' do
     fill_in 'date from', with: "2017-02-11"
     fill_in 'date to', with: "2017-02-12"
     expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
-    expect(page).to have_content 'Booking @ Ed\'s space requested for 11/02/2017'
+    expect(page).to have_content 'Booking @ Ed\'s space requested for 11/02/2017 - 12/02/2017'
     expect(current_path).to eq '/bookings/request_confirmation'
   end
 
