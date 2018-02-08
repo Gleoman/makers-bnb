@@ -92,4 +92,23 @@ class DwellBNB < Sinatra::Base
   get '/bookings/new' do
     erb :'bookings/new'
   end
+
+  post '/bookings/new' do
+    session[:space_id] =  params[:space_id]
+    redirect '/bookings/new'
+  end
+
+  post '/bookings' do
+    booking = Booking.create(date_to: params[:'date to'], date_from: params[:'date from'],
+                          user_id: session[:user_id], space_id: session[:space_id]
+                         )
+    session[:booking_id] = booking.id
+    redirect '/bookings/request_confirmation'
+  end
+
+  get '/bookings/request_confirmation' do
+    @booking = Booking.get(session[:booking_id])
+    @space = Space.get(@booking.space_id)
+    erb :'bookings/request_confirmation'
+  end
 end

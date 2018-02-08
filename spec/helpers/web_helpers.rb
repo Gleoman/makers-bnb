@@ -29,3 +29,12 @@ def log_in(username: 'Ed', password: 'Banana')
   fill_in('username', with: username)
   click_button 'Log in'
 end
+
+def list_space_with_date2
+ visit '/spaces/new'
+ fill_in 'name', with: 'Ed\'s space'
+ fill_in 'description', with: 'small'
+ fill_in 'price', with: '£50'
+ fill_in 'availability', with: '13/2/2018' #, 14/2/2018, 15/02/2018'
+ click_button 'List space'
+end

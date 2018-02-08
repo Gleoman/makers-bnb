@@ -1,1 +1,18 @@
-Book Space
+<% if !current_user %>
+You can't book without signing in
+ <% else %>
+ Book Space
+ <form action='/bookings' method='post'>
+   <label for='date from'>
+     Date from: <input name='date from' type='date'>
+   </label>
+   <label for='date to'>
+     Date to: <input name='date to' type='date'>
+   </label>
+   <input type='submit' value='Request to book'>
+ </form>
+<% end %>
+
+<a href="/sessions/new">
+  <button>Login</button>
+</a>
