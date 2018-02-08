@@ -20,6 +20,7 @@
 	<ul>
     <h2><%= space.name %> listed </h2>
     <p> Description: </p> <p><%= space.description %> </p>
+		<p> Picture: </p><img src=<%= space.picture_url %>>
     <p> Price per Night: <%= space.price %> </p>
     <p> Availability: </p>
     <% space.availabilities.each do |availability| %>
