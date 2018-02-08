@@ -45,6 +45,7 @@ feature 'search for a space' do
 		fill_in 'description', with: 'reasonable'
 		fill_in 'price', with: '£55'
 		fill_in 'availability', with: '18/05/2018, 20/12/2018, 01/01/2019'
+		fill_in 'picture_url', with: 'https://i.imgur.com/NAymlu5.jpg, https://i.imgur.com/PgVpNx4.jpg?1'
 		click_button 'List space'
 		expect(page).to have_field("check_availability")
 		fill_in 'check_availability', with: '18/05/2018'

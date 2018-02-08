@@ -53,6 +53,7 @@ class DwellBNB < Sinatra::Base
 
   get '/spaces' do
     @listings = Space.all
+		# binding.pry
     erb :'spaces/listings'
   end
 
