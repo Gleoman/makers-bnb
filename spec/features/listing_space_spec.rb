@@ -1,5 +1,6 @@
 feature 'a user can list space' do
   scenario 'user can post a space' do
+    sign_up
     visit'/spaces/new'
     expect(page).to have_content('Enter space details')
   end
