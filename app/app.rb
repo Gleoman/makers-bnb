@@ -97,6 +97,7 @@ class DwellBNB < Sinatra::Base
 
   get '/bookings/new' do
     @space = Space.get(session[:space_id])
+		redirect '/' if @space == nil
     erb :'bookings/new'
   end
 
