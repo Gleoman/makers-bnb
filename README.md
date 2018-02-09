@@ -1,13 +1,64 @@
 
-# **DwellBnB**
+# DwellBnB
 
-### **Application Summary**
+## Application Summary
 
 DwellBnB is the online place for short-term, informal lets of surplus spaces.
 
 It provides proprietors with a place to list their spaces, which renters can  
 then choose from, with the subsequent rental transaction taking place on  
 the DwellBnB platform.
+
+## Features
+
+* user sign up
+* email confirmation upon sign in
+* user sign in
+* password encryption
+* user sign out
+* list space
+* viewing all available spaces
+* search by date availability
+* request space
+* space owner booking confirmation
+* space owner booking rejection
+* user payment
+
+Listed within the README are user stories which given more time we would have wanted to implement. Given more time we would have looked into testing user payment, and added unit testing for database amendment.
+
+### Usage
+
+#### Getting started
+* Clone https://github.com/Leigan0/makers-bnb.git
+* cd makers-bnb
+* Bundle
+* Create two databases, dwellbnb_test and dwellbnb_development.
+* rackup
+* To run the email confirmation feature you need will need to provide your own api key via environment    variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME.
+
+#### Tests
+
+- Feature test focus within the project
+- Unit tests included where required for Mailer model and to ensure user authentication
+- To run tests run rspec from command line
+
+## What it looks like
+
+![Alt text](img/homepage.png)
+
+DwellBnB
+
+## Technologies used
+
+ * Ruby
+ * Sinatra
+ * Capybara
+ * Rspec
+ * Mailgun
+ * Stripe
+ * HTML
+ * CSS
+ * DataMapper
 
 ### **User Stories**
 
@@ -227,9 +278,3 @@ As a user
 So that I can receive payment for a space
 I want to be able to accept payment through Stripe
 ```
-
-## Usage
-
-Create two databases, dwellbnb_test and dwellbnb_development.
-
-To run the email confirmation feature You need will need to provide your own api key by environment variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME
