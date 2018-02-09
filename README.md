@@ -57,7 +57,7 @@ We would have also reviewed the code to clean up the codebase and separate the c
 ## What it looks like
 
 ![Alt text](img/homepage.png)
-![Alt text](img/space.png)
+![Alt text](img/spaces.png)
 ![Alt text](img/payment.png)
 
 
