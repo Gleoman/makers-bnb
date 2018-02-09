@@ -1,6 +1,17 @@
-<h1> Are you sure you want to sign out ...? look at these great spaces </h1>
+<h1> Are you sure you want to sign out ...? Look at these great spaces </h1>
 
 <form action="/sessions" method='post' class='logout'>
     <input type="hidden" name='_method' value='delete'>
     <input type="submit" value="Sign out"></button>
 </form>
+
+<div class="listing">
+  <ul>
+    <% unless @listings.empty? %>
+    <h2><%= @listings[0].name %></h2>
+			<img src=<%= @listings[0].picture_url %>>
+      <h2><%= @listings[-1].name %></h2>
+  			<img src=<%= @listings[-1].picture_url.split(',').first %>>
+        <% end %>
+  </ul>
+</div>
