@@ -3,6 +3,16 @@ def sign_up
   fill_in('password', :with => 'password1')
   fill_in('name', :with => 'Ed')
   fill_in('username', :with => 'ed01')
+  fill_in('email_address', :with => '123test@test.com')
+  allow(Mailer).to receive(:call).and_return(nil)
+  click_button 'Sign up'
+end
+
+def sign_up_blank_email
+  visit '/users/new'
+  fill_in('password', :with => 'password1')
+  fill_in('name', :with => 'Ed')
+  fill_in('username', :with => 'ed01')
   click_button 'Sign up'
 end
 

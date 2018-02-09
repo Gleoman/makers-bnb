@@ -9,6 +9,8 @@ gem 'sinatra'
 gem 'bcrypt'
 gem 'pry'
 gem 'sinatra-flash'
+gem 'mailgun-ruby'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
   gem 'capybara'

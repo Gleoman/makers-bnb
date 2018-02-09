@@ -7,6 +7,7 @@ class User
   property :name,            Text, required:true
   property :username,        Text, required: true, unique: true
   property :password_digest, Text, required: true
+  property :email_address, String, required: true, unique: true
 
   has n, :bookings
 
@@ -18,10 +19,6 @@ class User
 
   def self.authenticate(username, login_password)
     user = first(username: username)
-    if user && BCrypt::Password.new(user.password_digest) == login_password
-      user
-    else
-      nil
-    end
+    user if user && BCrypt::Password.new(user.password_digest) == login_password
   end
 end
