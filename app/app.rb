@@ -1,4 +1,5 @@
 require 'pry'
+require 'stripe'
 require './app/views/view_helpers'
 
 ENV['RACK_ENV'] ||= 'development'
@@ -114,6 +115,7 @@ class DwellBNB < Sinatra::Base
       flash.next[:notice] = 'Space is not available on those dates'
       redirect '/bookings/new'
     end
+
   end
 
   get '/bookings/confirmation' do
@@ -125,6 +127,20 @@ class DwellBNB < Sinatra::Base
     @booking = Booking.get(session[:booking_id])
     @space = Space.get(@booking.space_id)
     erb :'bookings/request_confirmation'
+  end
+
+  post '/bookings/payment' do
+    @space = Space.get(session[:space_id])
+
+    Stripe.api_key = "sk_test_9aQTaNRBLeqlrX3sTY6DAkYO"
+    token = params[:stripeToken]
+    charge = Stripe::Charge.create(
+      :amount => @space.price + "00",
+      :currency => "gbp",
+      :description => "DwellBnB Charge",
+      :source => token,
+    )
+    erb :'bookings/payment'
   end
 
   post '/bookings/confirmation' do

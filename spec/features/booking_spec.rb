@@ -19,6 +19,7 @@ feature 'a user can book a space' do
     expect(page).to have_content("You can't book without signing in")
   end
 
+
   scenario 'A user can request to book a space' do
     sign_up
     list_space_with_date

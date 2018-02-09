@@ -1,2 +1,16 @@
 <br>
 <h1>Booking @ <%= @space.name %> requested for <%= @booking.date_from.strftime('%d/%m/%Y') %> - <%= @booking.date_to.strftime('%d/%m/%Y') %> </h1>
+<center>
+<form action='/bookings/payment' method='POST'>
+  <script
+  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  data-key="pk_test_kSnECMwn80WdSciggtmwUaow"
+
+  data-amount= "Pay Now"
+  data-name="DwellBnB"
+  data-description="DwellBnB Booking"
+  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+  data-locale="auto">
+  </script>
+</form>
+</center>
