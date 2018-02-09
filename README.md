@@ -26,6 +26,8 @@ the DwellBnB platform.
 
 Listed within the README are user stories which given more time we would have wanted to implement. Given more time we would have looked into testing user payment, and added unit testing for database amendment.
 
+We would have also reviewed the code to clean up the codebase and separate the controller file. Code standards could also be improved by ensuring all the code fits code convention and styling.
+
 ### Usage
 
 #### Getting started
@@ -42,11 +44,22 @@ Listed within the README are user stories which given more time we would have wa
 - Unit tests included where required for Mailer model and to ensure user authentication
 - To run tests run rspec from command line
 
+#### Navigation
+
+- To list or book a space a user must create an account. Once logged in a user can list a space and book a space.
+- Prior to booking in a user can view all available spaces
+- The app includes a navigation bar which allows the user to navigate the site
+- A user can request to book a space, at which point a request is sent to the owner of the space
+- Before availability is removed - the owner must confirm the booking
+- At which point the availability of the space will be updated and the availability will be removed from space listing.
+
+
 ## What it looks like
 
 ![Alt text](img/homepage.png)
+![Alt text](img/space.png)
+![Alt text](img/payment.png)
 
-DwellBnB
 
 ## Technologies used
 
