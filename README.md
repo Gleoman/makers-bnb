@@ -9,6 +9,18 @@ It provides proprietors with a place to list their spaces, which renters can
 then choose from, with the subsequent rental transaction taking place on  
 the DwellBnB platform.
 
+### **Demo on local machine**
+
+Clone, install gems, create database, import test data then run via rackup:
+```
+git clone https://github.com/Leigan0/makers-bnb.git
+bundle install
+createdb dwellbnb_development
+psql -U <db_user> dwellbnb_development < demo/dbexport.pgsql
+rackup
+http://localhost:9292/
+```
+
 ### **User Stories**
 
 DwellBnB has been developed on the basis of the following User Stories:
