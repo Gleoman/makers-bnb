@@ -9,6 +9,7 @@ class User
   property :password_digest, Text, required: true
 
   has n, :bookings
+  has n, :spaces
 
   attr_reader :password
 

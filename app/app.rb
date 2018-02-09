@@ -44,7 +44,8 @@ class DwellBNB < Sinatra::Base
   post '/spaces' do
     space = Space.new(name: params[:name],
                 description: params[:description],
-                price: params[:price], picture_url: params[:picture_url])
+                price: params[:price], picture_url: params[:picture_url],
+                user_id: current_user.id)
     add_availability(space)
     space.save
     redirect '/spaces'
@@ -90,11 +91,6 @@ class DwellBNB < Sinatra::Base
     redirect to '/'
   end
 
-  delete '/availability' do
-    Space.remove_availability(params[:space_id], params[:availability_id])
-    redirect to '/spaces'
-  end
-
   get '/bookings/new' do
     @space = Space.get(session[:space_id])
     erb :'bookings/new'
@@ -118,10 +114,29 @@ class DwellBNB < Sinatra::Base
     end
   end
 
+  get '/bookings/confirmation' do
+    current_user
+    erb :'bookings/confirmation'
+  end
+
   get '/bookings/request_confirmation' do
     @booking = Booking.get(session[:booking_id])
     @space = Space.get(@booking.space_id)
     erb :'bookings/request_confirmation'
   end
 
+  post '/bookings/confirmation' do
+    booking = Booking.get(params[:booking_id])
+    from = booking.date_from.strftime('%Y-%m-%d')
+    to = booking.date_to.strftime('%Y-%m-%d')
+    if available?(booking.space_id, from, to)
+      booking.confirmed = true
+      booking.save
+      Space.remove_availability(booking.space_id, from, to)
+      redirect '/bookings/confirmation'
+    else
+      flash.next[:notice] = 'Space is not available on those dates'
+      redirect '/bookings/confirmation'
+    end
+  end
 end

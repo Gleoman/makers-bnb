@@ -6,10 +6,10 @@
    <h2><%= @space.name %></h2>
    <p> Description: </p> <p><%= @space.description %> </p>
    <p> Price per Night: <%= @space.price %> </p>
- 	<!-- <p> Availability: </p>
+ 	<p> Availability: </p>
    <% @space.availabilities.each do |availability| %>
      <%= availability.date.strftime('%d/%m/%Y') %>,
-   <% end %> -->
+   <% end %>
  </div>
 
  <form action='/bookings' method='post' class='book'>
