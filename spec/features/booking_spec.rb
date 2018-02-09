@@ -57,7 +57,7 @@ feature 'a user can book a space' do
     expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
   end
 
-  scenario 'it removes the date booked when the owner confirms the booking' do
+  scenario 'it removes the space availability when the owner confirms the booking' do
     sign_up
     list_space_with_date
     sign_out

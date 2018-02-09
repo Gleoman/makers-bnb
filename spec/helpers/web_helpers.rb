@@ -47,6 +47,7 @@ def sign_up_as_customer
   fill_in('password', :with => 'password1')
   fill_in('name', :with => 'Customer Bob')
   fill_in('username', :with => 'Bob')
+  fill_in('email_address', :with => 'a@dotmail.com')
   click_button 'Sign up'
 end
 
