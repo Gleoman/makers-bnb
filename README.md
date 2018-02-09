@@ -217,7 +217,7 @@ The following user stories involve payment functionality:
 ```
 As a user
 So that I can make payment for a space
-I want to be able to pay through Stripe 
+I want to be able to pay through Stripe
 ```
 
 ##### **User Story 25 - Payment - user receives payment from user via Stripe**
@@ -225,10 +225,11 @@ I want to be able to pay through Stripe
 ```
 As a user
 So that I can receive payment for a space
-I want to be able to accept payment through Stripe 
+I want to be able to accept payment through Stripe
 ```
 
 ## Usage
 
 Create two databases, dwellbnb_test and dwellbnb_development.
 
+To run the email confirmation feature You need will need to provide your own api key by environment variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME

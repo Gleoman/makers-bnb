@@ -7,6 +7,7 @@ class User
   property :name,            Text, required:true
   property :username,        Text, required: true, unique: true
   property :password_digest, Text, required: true
+  property :email_address, String, required: true, unique: true
 
   has n, :bookings
 

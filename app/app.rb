@@ -22,9 +22,11 @@ class DwellBNB < Sinatra::Base
   post '/users' do
     user = User.new(password: params[:password],
                 name: params[:name],
-                username: params[:username])
+                username: params[:username],
+                email_address: params[:email_address])
     if user.save
       session[:user_id] = user.id
+      Mailer.call(current_user)
       redirect to('/')
     else
       flash.now[:errors] = user.errors.full_messages
