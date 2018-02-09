@@ -9,6 +9,9 @@ gem 'sinatra'
 gem 'bcrypt'
 gem 'pry'
 gem 'sinatra-flash'
+gem 'zopim_rails'
+gem 'execjs'
+gem 'therubyracer'
 
 group :test do
   gem 'capybara'

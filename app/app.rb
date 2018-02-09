@@ -6,6 +6,9 @@ ENV['RACK_ENV'] ||= 'development'
 require 'sinatra/base'
 require 'sinatra/flash'
 require './database_setup.rb'
+require 'execjs'
+require 'v8'
+require 'zopim_rails'
 
 class DwellBNB < Sinatra::Base
 
@@ -16,6 +19,11 @@ class DwellBNB < Sinatra::Base
 
   get '/' do
     @listings = Space.all
+		# @livechat = LiveChat::REST::Client.new do |config|
+  	# 	config[:login] = ENV['LC-LOGIN']
+  	# 	config[:api_key] = ENV['lC-API']
+		# end
+		# @cxt = V8::Context.new
     erb :'spaces/listings'
   end
 
@@ -79,7 +87,7 @@ class DwellBNB < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/')
     else
-      flash.now[:errors] = ['The email or password is incorrect']
+      flash.now[:errors] = ['The username or password is incorrect']
       erb :'sessions/new'
     end
   end
