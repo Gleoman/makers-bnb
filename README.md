@@ -36,13 +36,27 @@ We would have also reviewed the code to clean up the codebase and separate the c
 
 ### Usage
 
+### **Demo on local machine**
+
+Clone, install gems, create database, import test data then run via rackup:
+```
+git clone https://github.com/Leigan0/makers-bnb.git
+bundle install
+createdb dwellbnb_development
+psql -U <db_user> dwellbnb_development < demo/dbexport.pgsql
+rackup
+visit http://localhost:9292/
+```
+
 #### Getting started
 * Clone https://github.com/Leigan0/makers-bnb.git
 * cd makers-bnb
 * Bundle
 * Create two databases, dwellbnb_test and dwellbnb_development.
 * rackup
+* visit http://localhost:9292/
 * To run the email confirmation feature you need will need to provide your own api key via environment    variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME.
+
 
 #### Tests
 
@@ -79,18 +93,6 @@ We would have also reviewed the code to clean up the codebase and separate the c
  * CSS
  * DataMapper
  * PostgreSQL
-
-### **Demo on local machine**
-
-Clone, install gems, create database, import test data then run via rackup:
-```
-git clone https://github.com/Leigan0/makers-bnb.git
-bundle install
-createdb dwellbnb_development
-psql -U <db_user> dwellbnb_development < demo/dbexport.pgsql
-rackup
-http://localhost:9292/
-```
 
 ### **User Stories**
 
