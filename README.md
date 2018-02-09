@@ -1,13 +1,84 @@
 
-# **DwellBnB**
+# DwellBnB
 
-### **Application Summary**
+## Application Summary
 
 DwellBnB is the online place for short-term, informal lets of surplus spaces.
 
-It provides proprietors with a place to list their spaces, which renters can  
-then choose from, with the subsequent rental transaction taking place on  
-the DwellBnB platform.
+It provides proprietors with a place to list their spaces, which renters can then choose from, with the subsequent rental transaction taking place on the DwellBnB platform.
+
+## Created by Team WINNERZ
+
+* [Phil Bugden](https://github.com/philb56)
+* [Ed Goold](https://github.com/Gleoman)
+* [Alex Wilson](https://github.com/alextwilson)
+* [Lewis Moore](https://github.com/lewmoore)
+* [Leigh-ann Gant](https://github.com/Leigan0)
+
+## Features
+
+* user sign up
+* email confirmation upon sign in
+* user sign in
+* password encryption
+* user sign out
+* list space
+* viewing all available spaces
+* search by date availability
+* request space
+* space owner booking confirmation
+* space owner booking rejection
+* user payment
+
+Listed within the README are user stories which given more time we would have wanted to implement. Given more time we would have looked into testing user payment, and added unit testing for database amendment.
+
+We would have also reviewed the code to clean up the codebase and separate the controller file. Code standards could also be improved by ensuring all the code fits code convention and styling.
+
+### Usage
+
+#### Getting started
+* Clone https://github.com/Leigan0/makers-bnb.git
+* cd makers-bnb
+* Bundle
+* Create two databases, dwellbnb_test and dwellbnb_development.
+* rackup
+* To run the email confirmation feature you need will need to provide your own api key via environment    variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME.
+
+#### Tests
+
+- Feature test focus within the project
+- Unit tests included where required for Mailer model and to ensure user authentication
+- To run tests run rspec from command line
+
+#### Navigation
+
+- To list or book a space a user must create an account. Once logged in a user can list a space and book a space.
+- Prior to booking in a user can view all available spaces
+- The app includes a navigation bar which allows the user to navigate the site
+- A user can request to book a space, at which point a request is sent to the owner of the space
+- Before availability is removed - the owner must confirm the booking
+- At which point the availability of the space will be updated and the availability will be removed from space listing.
+
+
+## What it looks like
+
+![Alt text](img/homepage.png)
+![Alt text](img/spaces.png)
+![Alt text](img/payment.png)
+
+
+## Technologies used
+
+ * Ruby
+ * Sinatra
+ * Capybara
+ * Rspec
+ * Mailgun
+ * Stripe
+ * HTML
+ * CSS
+ * DataMapper
+ * PostgreSQL
 
 ### **User Stories**
 
@@ -227,9 +298,3 @@ As a user
 So that I can receive payment for a space
 I want to be able to accept payment through Stripe
 ```
-
-## Usage
-
-Create two databases, dwellbnb_test and dwellbnb_development.
-
-To run the email confirmation feature You need will need to provide your own api key by environment variables called MAILGUN_API_KEY and MAILGUN_DOMAIN_NAME
