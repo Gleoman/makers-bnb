@@ -5,9 +5,15 @@
 
 DwellBnB is the online place for short-term, informal lets of surplus spaces.
 
-It provides proprietors with a place to list their spaces, which renters can  
-then choose from, with the subsequent rental transaction taking place on  
-the DwellBnB platform.
+It provides proprietors with a place to list their spaces, which renters can then choose from, with the subsequent rental transaction taking place on the DwellBnB platform.
+
+## Created by Team WINNERZ
+
+* Phil Bugden[https://github.com/philb56]
+* Ed Goold[https://github.com/Gleoman]
+* Alex Wilson[https://github.com/alextwilson]
+* Lewis Moore[https://github.com/lewmoore]
+* Leigh-ann Gant[https://github.com/Leigan0]
 
 ## Features
 
@@ -72,6 +78,7 @@ We would have also reviewed the code to clean up the codebase and separate the c
  * HTML
  * CSS
  * DataMapper
+ * PostgreSQL
 
 ### **User Stories**
 
