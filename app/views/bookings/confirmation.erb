@@ -1,0 +1,30 @@
+<% if @current_user.spaces.empty?%>
+  <h2> You haven't listed any spaces! </h2>
+<% else %>
+  <% @current_user.spaces.each do |space| %>
+    <div class="listing">
+      <ul>
+      <h2><%= space.name %></h2>
+      Description: <%= space.description %>
+      <br>
+      Price per Night: <%= space.price %>
+      <br>
+      <% space.bookings.each do |booking| %>
+        <% if !booking.confirmed %>
+          <%= booking.user.name %>'s wants to book this space:
+          from <%= booking.date_from.strftime('%d/%m/%Y') %>
+          until <%= booking.date_to.strftime('%d/%m/%Y') %>
+          <form action="/bookings/confirmation" method='post'>
+            <input type="hidden" name='booking_id' value="<%= booking.id %>" >
+            <input type="submit" value="Confirm <%= booking.user.name %>'s request">
+          </form>
+        <% else %>
+          Confirmed booking: <%= booking.user.name %> from from
+          <%= booking.date_from.strftime('%d/%m/%Y') %> until
+          <%= booking.date_to.strftime('%d/%m/%Y') %>
+        <% end %>
+      <% end %>
+  		</ul>
+    </div>
+  <% end %>
+<% end %>

@@ -10,6 +10,7 @@ class User
   property :email_address, String, required: true, unique: true
 
   has n, :bookings
+  has n, :spaces
 
   attr_reader :password
 
