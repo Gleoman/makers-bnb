@@ -80,6 +80,28 @@ feature 'a user can book a space' do
   end
 end
 
+feature 'a user can refuse a request' do
+  scenario 'user refuses request' do
+    sign_up
+    list_space_with_date
+    sign_out
+
+    sign_up_as_customer
+    visit '/spaces'
+    click_button 'Book Ed\'s space'
+    expect(current_path).to eq '/bookings/new'
+    fill_in 'date from', with: "2018-02-13"
+    fill_in 'date to', with: "2018-02-14"
+    expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
+    sign_out
+
+    log_in(username: 'ed01', password: 'password1')
+    visit '/bookings/confirmation'
+    click_button('Refuse Customer Bob\'s request')
+    expect(Booking.count).to eq 0
+  end
+end
+
 feature 'search for a space' do
 	scenario 'a user can search by available dates' do
     sign_up
