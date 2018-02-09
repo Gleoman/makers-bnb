@@ -69,6 +69,7 @@ class DwellBNB < Sinatra::Base
   end
 
   get '/sessions/sign_out' do
+    @listings = Space.all
     erb :'sessions/sign_out'
   end
 
