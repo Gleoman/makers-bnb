@@ -141,4 +141,10 @@ class DwellBNB < Sinatra::Base
       redirect '/bookings/confirmation'
     end
   end
+
+  delete '/bookings/refuse_confirmation' do
+    booking = Booking.get(params[:booking_id])
+    booking.destroy
+    redirect '/bookings/confirmation'
+  end
 end

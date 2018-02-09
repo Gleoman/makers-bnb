@@ -1,4 +1,6 @@
-<% if @current_user.spaces.empty?%>
+<% if !current_user %>
+  <h2> You need to sign in to see your spaces! </h2>
+<% elsif @current_user.spaces.empty? %>
   <h2> You haven't listed any spaces! </h2>
 <% else %>
   <% @current_user.spaces.each do |space| %>
@@ -17,6 +19,11 @@
           <form action="/bookings/confirmation" method='post'>
             <input type="hidden" name='booking_id' value="<%= booking.id %>" >
             <input type="submit" value="Confirm <%= booking.user.name %>'s request">
+          </form>
+          <form action="/bookings/refuse_confirmation" method='post'>
+            <input type="hidden" name='_method' value='delete'>
+            <input type="hidden" name='booking_id' value="<%= booking.id %>" >
+            <input type="submit" value="Refuse <%= booking.user.name %>'s request">
           </form>
         <% else %>
           Confirmed booking: <%= booking.user.name %> from from
