@@ -9,11 +9,11 @@ It provides proprietors with a place to list their spaces, which renters can the
 
 ## Created by Team WINNERZ
 
-* Phil Bugden[https://github.com/philb56]
-* Ed Goold[https://github.com/Gleoman]
-* Alex Wilson[https://github.com/alextwilson]
-* Lewis Moore[https://github.com/lewmoore]
-* Leigh-ann Gant[https://github.com/Leigan0]
+* [Phil Bugden](https://github.com/philb56)
+* [Ed Goold](https://github.com/Gleoman)
+* [Alex Wilson](https://github.com/alextwilson)
+* [Lewis Moore](https://github.com/lewmoore)
+* [Leigh-ann Gant](https://github.com/Leigan0)
 
 ## Features
 
