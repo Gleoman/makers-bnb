@@ -3,7 +3,8 @@ feature 'User log in' do
   let!(:user) do
     User.create(name: 'Ed',
                 username: 'Ed',
-                password: 'Banana')
+                password: 'Banana',
+                email_address: 'test123@mail.com')
   end
 
   scenario 'with correct credentials' do
@@ -22,7 +23,8 @@ feature 'User signs out' do
   let!(:user) do
     User.create(name: 'Ed',
                 username: 'Ed',
-                password: 'Banana')
+                password: 'Banana',
+                email_address: 'test123@mail.com')
   end
 
   scenario 'while being signed in' do

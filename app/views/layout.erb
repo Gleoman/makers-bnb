@@ -5,7 +5,6 @@
     <link href='/css/app.css' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <div class="image">
   <nav>
     <div class='navigation'>
       <li><a href="/">Home</a></li>
@@ -19,6 +18,7 @@
       <% end %>
 
       <% if current_user %>
+      <li><a href="/bookings/confirmation">View your spaces</a></li>
       <li><a href="/sessions/sign_out">Sign out</a></li>
       <% end %>
     </ul>
@@ -32,7 +32,6 @@
       <p></p>
       <%= e %>
     <% end %>
-  </div>
 <% end %>
 
 <%if flash[:notice]%>
@@ -42,9 +41,9 @@
 <% end %>
 
 <% if current_user %>
-<br></br>
+  <br>
   <h1> Hello  <%= current_user.name %>!</h1>
-   <h2> Welcome to DwellBnB </h2>
+  <h2> Welcome to DwellBnB </h2>
 <% end %>
 
   <%= yield%>

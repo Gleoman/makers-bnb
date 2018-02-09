@@ -1,26 +1,30 @@
-<br>
-<h2> Enter space details</h2>
-<br>
-<form class='space_input'action='/spaces' method='post'>
-  <label for='space'>
-  Space:
-  <input name='name' type='text' required>
-  </label>
-  <label for='description'>
-    Description:
-    <input name='description' type='text' required>
-  </label>
-  <label for ='price'>
-    Price per night:
-    <input name='price' type='text' required>
-  </label>
-  <label for ='availability'>
-    Availability:
-    <input name='availability' type='text'>
-  </label>
-	<label for ='picture_url'>
-		Picture url:
-		<input name="picture_url" type="text">
-	</label>
-  <input type='submit' value='List space'>
-</form>
+<% if !current_user %>
+  <h2> You can't list a space without signing in </h2>
+<% else %>
+  <br>
+  <h2> Enter space details</h2>
+  <br>
+  <form class='space_input'action='/spaces' method='post'>
+    <label for='space'>
+    Space:
+    <input name='name' type='text' required>
+    </label>
+    <label for='description'>
+      Description:
+      <input name='description' type='text' required>
+    </label>
+    <label for ='price'>
+      Price per night:
+      <input name='price' type='text' required>
+    </label>
+    <label for ='availability'>
+      Availability:
+      <input name='availability' type='text'>
+    </label>
+  	<label for ='picture_url'>
+  		Picture url:
+  		<input name="picture_url" type="text">
+  	</label>
+    <input type='submit' value='List space'>
+  </form>
+<% end %>

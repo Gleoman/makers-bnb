@@ -11,7 +11,9 @@ feature 'a user can book a space' do
   end
 
   scenario 'User cant book a space without signing in' do
+    sign_up
     list_space_with_date
+    sign_out
     visit '/spaces'
     click_button 'Book Ed\'s space'
     expect(page).to have_content("You can't book without signing in")
@@ -56,31 +58,31 @@ feature 'a user can book a space' do
     expect { click_button 'Request to book' } .to change(Booking, :count). by(0)
   end
 
-  # scenario 'it removes the date booked when the owner confirms the booking' do
-  #   pending
-  #   sign_up
-  #   list_space_with_date
-  #   click_button('Sign out')
-  #
-  #   sign_up_as_customer
-  #   visit '/spaces'
-  #   click_button 'Book Ed\'s space'
-  #   expect(current_path).to eq '/bookings/new'
-  #   fill_in 'date from', with: "2018-02-13"
-  #   fill_in 'date to', with: "2018-02-14"
-  #   expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
-  #   click_button('Sign out')
-  #
-  #   log_in(username: 'ed01', password: 'password1')
-  #   visit '/booking/confirmation'
-  #   click_button('Confirm')
-  #
-  #   expect(AvailabilitySpace.count).to eq 1
-  # end
+  scenario 'it removes the space availability when the owner confirms the booking' do
+    sign_up
+    list_space_with_date
+    sign_out
+
+    sign_up_as_customer
+    visit '/spaces'
+    click_button 'Book Ed\'s space'
+    expect(current_path).to eq '/bookings/new'
+    fill_in 'date from', with: "2018-02-13"
+    fill_in 'date to', with: "2018-02-14"
+    expect { click_button 'Request to book' } .to change(Booking, :count). by(1)
+    sign_out
+
+    log_in(username: 'ed01', password: 'password1')
+    visit '/bookings/confirmation'
+    click_button('Confirm Customer Bob\'s request')
+
+    expect(AvailabilitySpace.count).to eq 1
+  end
 end
 
 feature 'search for a space' do
 	scenario 'a user can search by available dates' do
+    sign_up
 		list_space_with_date
 		visit '/spaces/new'
 		fill_in 'name', with: 'Alex\'s space'

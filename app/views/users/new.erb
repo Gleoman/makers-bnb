@@ -1,20 +1,15 @@
-<br>
 <h2>To book our great spaces please sign up</h2>
 <br>
-<h3> Signing up is easy, we only need your name, a username and a password </h3>
+<h3> Signing up is easy, we only need your name, a username, your E-mail and a password </h3>
 
 <form class='user_sign_up' action='/users' method='post'>
-  <label for='name'>
     Name:
     <input name='name' type='text' required>
-  </label>
-  <label for='username'>
     Username:
     <input name='username' type='text' required>
-  </label>
-  <label for='password'>
+    Email address:
+    <input name='email_address' type='email' required>
     Password:
     <input name='password' type='password' required>
-  </label>
-  <input type='submit' value='Sign up'>
+    <input type='submit' value='Sign up'>
 </form>

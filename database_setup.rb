@@ -4,6 +4,9 @@ require './app/models/space'
 require './app/models/user'
 require './app/models/availability'
 require './app/models/booking'
+require './app/models/mailer'
+require 'dotenv/load'
+
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/dwellbnb_#{ENV['RACK_ENV']}")
 DataMapper.finalize
