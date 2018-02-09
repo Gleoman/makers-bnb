@@ -80,6 +80,18 @@ We would have also reviewed the code to clean up the codebase and separate the c
  * DataMapper
  * PostgreSQL
 
+### **Demo on local machine**
+
+Clone, install gems, create database, import test data then run via rackup:
+```
+git clone https://github.com/Leigan0/makers-bnb.git
+bundle install
+createdb dwellbnb_development
+psql -U <db_user> dwellbnb_development < demo/dbexport.pgsql
+rackup
+http://localhost:9292/
+```
+
 ### **User Stories**
 
 DwellBnB has been developed on the basis of the following User Stories:
