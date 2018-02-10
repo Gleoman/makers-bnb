@@ -78,6 +78,7 @@ visit http://localhost:9292/
 
 ![Alt text](img/homepage.png)
 ![Alt text](img/spaces.png)
+![Alt text](img/paymentpage.png)
 ![Alt text](img/payment.png)
 
 
